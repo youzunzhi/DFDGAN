@@ -1,0 +1,61 @@
+
+OUTPUT_DIR: "./runs/"
+
+TRAIN:
+  STAGE: 1
+#  DEVICE_ID: '1'
+
+DATASETS:
+  NAMES: ['dukemtmc', 'msmt17']
+DATALOADER:
+  BATCH_SIZE: 8
+E:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet50_model_100.pth"
+  SOLVER:
+    BASE_LR: 0.000035
+    STEPS: (15, 30)
+    WARMUP_ITERS: 10
+ED:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet18_model_100.pth"
+  SOLVER:
+    BASE_LR: 0.000035
+    STEPS: (15, 30)
+    WARMUP_ITERS: 10
+
+G:
+  PRETRAIN_CHOICE: 'no'
+  PRETRAIN_PATH: ""
+
+DI:
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: "./pretrain/imagenet/resnet50-19c8e357.pth"
+#  PRETRAIN_CHOICE: 'no'
+#  PRETRAIN_PATH: ""
+  SOLVER:
+    BASE_LR: 0.000035
+    STEPS: (15, 30)
+    WARMUP_ITERS: 10
+
+DD:
+#  PRETRAIN_CHOICE: 'self'
+#  PRETRAIN_PATH: "./pretrain/d-ms/resnet18_model_100.pth"
+  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_PATH: "./pretrain/imagenet/resnet18-5c106cde.pth"
+#  PRETRAIN_CHOICE: 'no'
+#  PRETRAIN_PATH: ""
+  SOLVER:
+    BASE_LR: 0.000035
+    STEPS: (15, 30)
+    WARMUP_ITERS: 10
+
+LOSS_WEIGHT:
+  G_DI: 2.0
+  G_DD: 2.0
+  ID: 1.0
+  CYC: 1.0
+  E: 3.0
+  ED: 3.0
+  DI: 1.0
+  DD: 1.0

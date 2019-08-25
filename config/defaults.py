@@ -3,11 +3,11 @@ from yacs.config import CfgNode as CN
 
 _C = CN()
 
-_C.OUTPUT_DIR = ""
+_C.OUTPUT_DIR = "./runs/"
 
 _C.TRAIN = CN()
 _C.TRAIN.DEVICE = "cuda"
-_C.TRAIN.DEVICE_ID = '0'
+_C.TRAIN.DEVICE_ID = '0,1'
 _C.TRAIN.STAGE = 1
 _C.TRAIN.START_EPOCH = 0
 _C.TRAIN.MAX_EPOCHS = 120
@@ -89,7 +89,7 @@ _C.ED.SOLVER.WARMUP_METHOD = "linear"
 _C.DI = CN()
 _C.DI.LAST_STRIDE = 1
 _C.DI.PRETRAIN_PATH = ''
-_C.DI.PRETRAIN_CHOICE = 'self'
+_C.DI.PRETRAIN_CHOICE = 'no'
 _C.DI.NAME = 'resnet50'
 _C.DI.NECK = 'bnneck'
 _C.DI.IF_LABELSMOOTH = 'on'
@@ -112,7 +112,7 @@ _C.DI.SOLVER.WARMUP_METHOD = "linear"
 _C.DD = CN()
 _C.DD.LAST_STRIDE = 1
 _C.DD.PRETRAIN_PATH = ''
-_C.DD.PRETRAIN_CHOICE = 'self'
+_C.DD.PRETRAIN_CHOICE = 'no'
 _C.DD.NAME = 'resnet18'
 _C.DD.NECK = 'bnneck'
 _C.DD.IF_LABELSMOOTH = 'on'
@@ -163,4 +163,5 @@ _C.LOSS_WEIGHT.DD = 1.0
 
 _C.TEST = CN()
 _C.TEST.NECK_FEAT = 'after'
-
+_C.TEST.DEVICE = "cuda"
+_C.TEST.DEVICE_ID = '0'

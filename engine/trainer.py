@@ -82,17 +82,18 @@ def make_trainer(cfg, E, Ed, G, Di, Dd,
                  optimizer_E, optimizer_Ed, optimizer_G, optimizer_Di, optimizer_Dd,
                  loss_G_func, loss_Di_func, loss_Dd_func, device='cuda'):
     if device:
+        E.to(device)
+        Ed.to(device)
+        G.to(device)
+        Di.to(device)
+        Dd.to(device)
         if torch.cuda.device_count() > 1:
             E = nn.DataParallel(E)
             Ed = nn.DataParallel(Ed)
             G = nn.DataParallel(G)
             Di = nn.DataParallel(Di)
             Dd = nn.DataParallel(Dd)
-        E.to(device)
-        Ed.to(device)
-        G.to(device)
-        Di.to(device)
-        Dd.to(device)
+
     stage = cfg.TRAIN.STAGE
 
     def _update(engine, batch):

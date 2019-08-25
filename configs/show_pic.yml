@@ -1,0 +1,16 @@
+OUTPUT_DIR: "./runs/"
+
+E:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet50_model_100.pth"
+ED:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet18_model_100.pth"
+G:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "/home/zunzhi/DFDGAN/runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/DFDGAN_G_model_20.pth"
+
+DATASETS:
+  NAMES: ['dukemtmc', 'msmt17']
+DATALOADER:
+  BATCH_SIZE: 2

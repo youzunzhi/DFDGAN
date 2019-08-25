@@ -40,7 +40,7 @@ def main():
     logger = setup_logger("DFDGAN", output_dir, 0)
     logger.info("Running with config:\n{}".format(cfg))
     if cfg.TRAIN.DEVICE == "cuda":
-        os.environ['CUDA_VISIBLE_DEVICES'] = cfg.TRAIN.DEVICE_ID    # new add by gu
+        os.environ['CUDA_VISIBLE_DEVICES'] = cfg.TRAIN.DEVICE_ID
     cudnn.benchmark = True
 
     train(cfg, output_dir)

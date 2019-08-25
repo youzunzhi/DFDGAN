@@ -8,7 +8,7 @@ TRAIN:
 DATASETS:
   NAMES: ['dukemtmc', 'msmt17']
 DATALOADER:
-  BATCH_SIZE: 8
+  BATCH_SIZE: 16
 E:
   PRETRAIN_CHOICE: 'self'
   PRETRAIN_PATH: "./pretrain/d-ms/resnet50_model_100.pth"
@@ -24,31 +24,39 @@ ED:
     STEPS: (15, 30)
     WARMUP_ITERS: 10
 
-G:
-  PRETRAIN_CHOICE: 'no'
-  PRETRAIN_PATH: ""
-
+#G:
+#  PRETRAIN_CHOICE: 'self'
+#  PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/DFDGAN_G_model_20.pth"
+#  SOLVER:
+#    PRETRAIN_CHOICE: 'self'
+#    PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/DFDGAN_G_optimizer_20.pth"
 DI:
-  PRETRAIN_CHOICE: 'imagenet'
-  PRETRAIN_PATH: "./pretrain/imagenet/resnet50-19c8e357.pth"
-#  PRETRAIN_CHOICE: 'no'
-#  PRETRAIN_PATH: ""
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet50_model_100.pth"
+#  PRETRAIN_CHOICE: 'imagenet'
+#  PRETRAIN_PATH: "./pretrain/imagenet/resnet50-19c8e357.pth"
+#  PRETRAIN_CHOICE: 'self'
+#  PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/resnet50_Di_model_20.pth"
   SOLVER:
-    BASE_LR: 0.000035
-    STEPS: (15, 30)
+    BASE_LR: 0.00035
+    STEPS: (30, 55)
     WARMUP_ITERS: 10
+#    PRETRAIN_CHOICE: 'self'
+#    PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/resnet50_Di_optimizer_20.pth"
 
 DD:
+  PRETRAIN_CHOICE: 'self'
+  PRETRAIN_PATH: "./pretrain/d-ms/resnet18_model_100.pth"
+#  PRETRAIN_CHOICE: 'imagenet'
+#  PRETRAIN_PATH: "./pretrain/imagenet/resnet18-5c106cde.pth"
 #  PRETRAIN_CHOICE: 'self'
-#  PRETRAIN_PATH: "./pretrain/d-ms/resnet18_model_100.pth"
-  PRETRAIN_CHOICE: 'imagenet'
-  PRETRAIN_PATH: "./pretrain/imagenet/resnet18-5c106cde.pth"
-#  PRETRAIN_CHOICE: 'no'
-#  PRETRAIN_PATH: ""
+#  PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/resnet18_D_model_20.pth"
   SOLVER:
-    BASE_LR: 0.000035
+    BASE_LR: 0.00035
     STEPS: (15, 30)
     WARMUP_ITERS: 10
+#    PRETRAIN_CHOICE: 'self'
+#    PRETRAIN_PATH: "./runs/dukemtmc-msmt17/[2019-08-23-17:50:55]/resnet18_D_optimizer_20.pth"
 
 LOSS_WEIGHT:
   G_DI: 2.0
